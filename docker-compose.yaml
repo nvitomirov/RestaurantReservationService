@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  reservation-service-postgres:
+    container_name: reservation-service-postgres
+    image: postgres:13
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: reservation-service-db
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: u53r
+    ports:
+      - "5432:5432"
+    networks:
+      - reservation-service-network
+    restart: unless-stopped
+    deploy:
+       resources:
+          limits:
+            cpus: '0.500'
+            memory: 50M
+
+networks:
+  reservation-service-network:
+    driver: bridge
