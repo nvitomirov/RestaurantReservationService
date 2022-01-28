@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/reservation-service-postgres
+    username: user1
+    password: u53r
+    driverClassName: org.postgresql.Driver
+  jackson:
+    deserialization:
+      ADJUST_DATES_TO_CONTEXT_TIME_ZONE: false
